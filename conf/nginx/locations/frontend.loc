@@ -1,7 +1,10 @@
 
 
     location / {
-            return 302 https://$host/${PUBLIC_URL}/;
+            # explicit ${HTTPS_PORT} so this redirects correctly to the HTTPS
+            # port from both HTTP and HTTPS entry, even when HTTPS_PORT is
+            # remapped away from 443 (see compose.base.yml)
+            return 302 https://$host:${HTTPS_PORT}/${PUBLIC_URL}/;
         }
 
     location /${PUBLIC_URL} {
