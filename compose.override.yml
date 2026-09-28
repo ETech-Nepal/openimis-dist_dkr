@@ -1,0 +1,5 @@
+# Etech Insure overrides. Docker Compose loads this file automatically on top of
+# compose.yml, so upstream compose files stay untouched and merge cleanly.
+services:
+  frontend:
+    image: etech-insure-fe:${ETECH_FE_TAG:-25.10-etech.1}
