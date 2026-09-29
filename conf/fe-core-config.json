@@ -4,15 +4,16 @@
     "errorColor": "#A11A1F",
     "whiteColor": "#FFFFFF",
     "fontColor": "#1B2433",
-    "backgroundColor": "#FFFFFF",
-    "headerColor": "#F5F6F8",
+    "backgroundColor": "#F5F6F8",
+    "headerColor": "#E3E6EB",
     "greyColor": "#5B6778",
-    "selectedTableRowColor": "rgba(27, 36, 51, 0.06)",
-    "hoveredTableRowColor": "rgba(27, 36, 51, 0.04)",
-    "toggledButtonColor": "#5B6778",
+    "selectedTableRowColor": "rgba(27,36,51,0.06)",
+    "hoveredTableRowColor": "rgba(27,36,51,0.04)",
+    "toggledButtonColor": "#2F3B4E",
     "lockedBackgroundPattern": "repeating-linear-gradient(45deg, #E3E6EB 1px, #E3E6EB 1px, #FFFFFF 10px, #FFFFFF 10px)"
   },
   "logo": {
     "disableTextLogo": false
-  }
+  },
+  "menuLeft": true
 }
