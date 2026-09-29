@@ -1,0 +1,2 @@
+-- Etech: replaces the image's demo_db.sql, so a fresh database starts without
+-- the openIMIS demo dataset (base reference data still comes from 00_dump.sql).
