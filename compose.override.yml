@@ -15,7 +15,7 @@ services:
   frontend:
     image: etech-imis-fe:${ETECH_FE_TAG:-26.04-etech.1}
   # Stock upstream backend until an Etech backend module is built from source;
-  # then set ETECH_BE_IMAGE=etech-imis-be:<tag> in .env (see FORKING-GUIDE.md in etech-docs).
+  # then set ETECH_BE_IMAGE=etech-imis-be:<tag> in .env (see FORKING-GUIDE.md in etech-insure-docs).
   backend:
     image: ${ETECH_BE_IMAGE:-ghcr.io/openimis/openimis-be:26.04}
   worker:
