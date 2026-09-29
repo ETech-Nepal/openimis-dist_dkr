@@ -20,6 +20,13 @@ services:
     image: ${ETECH_BE_IMAGE:-ghcr.io/openimis/openimis-be:26.04}
   worker:
     image: ${ETECH_BE_IMAGE:-ghcr.io/openimis/openimis-be:26.04}
+    # The upstream check (`celery inspect ping`) loads the whole Django app
+    # before pinging, which takes ~40 s here; with a 12 s timeout a healthy
+    # worker was always reported unhealthy.
+    healthcheck:
+      interval: 120s
+      timeout: 90s
+      start_period: 120s
   # Only the containers use Redis; publishing it on the host exposed it to the
   # internet.
   redis:
