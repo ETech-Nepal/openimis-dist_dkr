@@ -1,17 +1,22 @@
 # Etech IMIS overrides. Docker Compose loads this file automatically on top of
 # compose.yml, so upstream compose files stay untouched and merge cleanly.
 
-# Keep the project name fixed: named volumes (photos, redis, OpenSearch) are
-# prefixed with it. The database is NOT in a named volume yet; see
-# etech-docs/DOCKER-FLOW.md before any `docker compose down`.
+# Keep the original project name: volumes (database, photos) are named after it,
+# so moving this folder must not create a fresh, empty database.
 name: openimis-dist_dkr
 
 services:
+  # The pgsql image (25.10, 26.04: Postgres 13) keeps its data in PGDATA=/var/lib/postgresql/data, but
+  # upstream mounts the named volume at /var/lib/postgresql/18/data. Mount it
+  # where the data really is, so `down` / moving the folder keeps the database.
+  db:
+    volumes:
+      - database:/var/lib/postgresql/data
   frontend:
-    image: etech-imis-fe:${ETECH_FE_TAG:-25.10-etech.1}
+    image: etech-imis-fe:${ETECH_FE_TAG:-26.04-etech.1}
   # Stock upstream backend until an Etech backend module is built from source;
-  # then set ETECH_BE_IMAGE=etech-imis-be:<tag> in .env (see etech-docs/FORKING-GUIDE.md).
+  # then set ETECH_BE_IMAGE=etech-imis-be:<tag> in .env (see docs/FORKING-GUIDE.md).
   backend:
-    image: ${ETECH_BE_IMAGE:-ghcr.io/openimis/openimis-be:25.10}
+    image: ${ETECH_BE_IMAGE:-ghcr.io/openimis/openimis-be:26.04}
   worker:
-    image: ${ETECH_BE_IMAGE:-ghcr.io/openimis/openimis-be:25.10}
+    image: ${ETECH_BE_IMAGE:-ghcr.io/openimis/openimis-be:26.04}
